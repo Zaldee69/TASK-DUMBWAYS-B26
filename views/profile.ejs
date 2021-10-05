@@ -1,0 +1,42 @@
+<%- include('./partials/head.ejs')%> <%- include('./partials/sidebar.ejs')%>
+
+<div class="home-content profile-container">
+  <div class="user-profile-container">
+    <div class="user-profile">
+      <img src="/static/images/profile-square-extra-small.png" alt="" />
+      <div class="user-name">
+        <span><%= userName %></span>
+        <small class="-user-account">Premium</small>
+      </div>
+      <div class="user-track-total">
+        <a href="#"><span><%= totalMusic %></span> Tracks</a>
+        <a href="#"><span>578k</span> Followers</a>
+      </div>
+      <div class="user-badge-icons">
+        <img class="icons-1" src="/static/images/badge.png" alt="" />
+        <img class="icons-2" src="/static/images/fire.png" alt="" />
+        <img class="icons-3" src="/static/images/medal.png" alt="" />
+      </div>
+    </div>
+    <div class="music-library-container">
+      <div class="library-title">
+        <h1>Library</h1>
+        <a class="btn-login" href="/addmusic">Add Music</a>
+      </div>
+    </div>
+
+    <div class="song-images-container">
+      <% content.forEach(function(user){ %>
+      <div class="song-image">
+        <img src="/static/uploads/<%= user.cover_music%>" alt="" />
+        <a href="/delete/<%= user.id%>" class="delete-btn">Delete</a>
+        <a href="/editmusic/<%= user.id%>" class="edit-btn">Edit</a>
+        <span><%= user.title%></span>
+      </div>
+
+      <% }); %>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer.ejs')%>

@@ -1,0 +1,242 @@
+<%- include('./partials/head.ejs')%> <%- include('./partials/sidebar.ejs')%>
+
+<div class="home-content">
+  <div class="home-container">
+    <div class="left-content-container">
+      <div class="left-content-title">
+        <h1>Justin Bieber</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div class="play-title">
+          <!-- <span>Play Now </span>
+          <i class="bx bx-play-circle"></i> -->
+          <a class="btn-login" href="">Listen Now</a>
+        </div>
+      </div>
+      <div class="left-content-img">
+        <img class="hero-img" src="/static/images/bieber.png" alt="" />
+      </div>
+    </div>
+
+    <div class="right-profile-container">
+      <% if (isLogin) { %>
+      <div class="profile-col">
+        <div class="profile-img">
+          <img src="/static/images/profile-square-extra-small.png" alt="" />
+        </div>
+
+        <div class="name-profile">
+          <span><a href="/profile"><%= userName %></a></span>
+          <span class="account">Premium</span>
+          <div class="track-total">
+            <a href="#"><span><%= totalMusic %></span> Tracks</a>
+            <a href="#"><span>578k</span> Followers</a>
+          </div>
+          <div class="badge-icons">
+            <img class="icons-1" src="/static/images/badge.png" alt="" />
+            <img class="icons-2" src="/static/images/fire.png" alt="" />
+            <img class="icons-3" src="/static/images/medal.png" alt="" />
+          </div>
+        </div>
+        <div class="profile-logout-icon">
+          <a href="/logout"><i class="bx bx-log-out"></i></a>
+        </div>
+      </div>
+      <% } else{ %>
+      <div class="btn-container">
+        <a class="btn-login" href="/login">Login</a>
+        <a class="btn-regis" href="/register">Register</a>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <div class="popular-music-container">
+    <span class="title-popular">Popular Musics</span>
+    <div class="music-img">
+      <div class="music">
+        <img
+          src="https://i.pinimg.com/236x/89/fe/6d/89fe6d9ac7b4819a060c82951ed121a5.jpg"
+          alt=""
+        />
+        <div class="img-title">
+          <p>Filipe</p>
+          <span>My Life</span>
+        </div>
+      </div>
+      <div class="music">
+        <img
+          src="https://i.pinimg.com/236x/4e/b4/f8/4eb4f8a7e04b57e74914fc46e013ac40.jpg"
+          alt=""
+        />
+        <div class="img-title">
+          <p>Camila Cabello</p>
+          <span>Havana</span>
+        </div>
+      </div>
+      <div class="music">
+        <img
+          src="https://i.pinimg.com/236x/a3/12/11/a312112702564cc4bb219e9ee0605171.jpg"
+          alt=""
+        />
+        <div class="img-title">
+          <p>One Day</p>
+          <span>Nuke Bomb</span>
+        </div>
+      </div>
+      <div class="music">
+        <img
+          src="https://i.pinimg.com/236x/68/eb/10/68eb1055b4b09b346ed2361756adfa79.jpg"
+          alt=""
+        />
+        <div class="img-title">
+          <p>Paranoia</p>
+          <span>Headache</span>
+        </div>
+      </div>
+      <div class="music">
+        <img
+          src="https://i.pinimg.com/236x/59/ef/48/59ef48aaee51e2f3f90a86a602ac8217.jpg"
+          alt=""
+        />
+        <div class="img-title">
+          <p>Lil Papa</p>
+          <span>Rich Guy</span>
+        </div>
+      </div>
+      <div class="music">
+        <img
+          src="https://i.pinimg.com/236x/80/cf/79/80cf79ae88fb1a944a2c8e8ffd599800.jpg"
+          alt=""
+        />
+        <div class="img-title">
+          <p>Totya</p>
+          <span>Made It</span>
+        </div>
+      </div>
+      <div class="music">
+        <img
+          src="https://i.pinimg.com/236x/26/fe/a1/26fea1ca45a26458ffac7cf274de0121.jpg"
+          alt=""
+        />
+        <div class="img-title">
+          <p>Polo G</p>
+          <span>The Goat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="suggestion-container">
+    <div class="suggestion-left-content">
+      <p class="suggestion-title">For You</p>
+      <a class="suggestion-btn" href="/songs"
+        >See All <i class="bx bx-right-arrow-alt"></i
+      ></a>
+      <div class="content-wrap">
+        <div class="suggestion-image">
+          <img
+            src="https://i.pinimg.com/236x/da/0a/cf/da0acfeab8e8eedf5e9817af5210a5db.jpg"
+            alt=""
+          />
+          <div class="artis-name">
+            <p>Nikita Valerie</p>
+            <span>Doomsday</span>
+          </div>
+          <div class="icons-wrap">
+            <small>05:18</small>
+            <i class="bx bx-star"></i>
+            <i class="bx bx-play-circle"></i>
+            <i class="bx bx-dots-vertical-rounded"></i>
+          </div>
+        </div>
+        <div class="suggestion-image">
+          <img
+            src="https://i.pinimg.com/236x/c3/d6/77/c3d677d159b95b94bc641448e1416889.jpg"
+            alt=""
+          />
+          <div class="artis-name">
+            <p>Mark Villain</p>
+            <span>Revenge</span>
+          </div>
+          <div class="icons-wrap">
+            <small>03:39</small>
+            <i class="bx bx-star"></i>
+            <i class="bx bx-play-circle"></i>
+            <i class="bx bx-dots-vertical-rounded"></i>
+          </div>
+        </div>
+        <div class="suggestion-image">
+          <img
+            src="https://i.pinimg.com/236x/f6/cf/27/f6cf27727d50ffc1151bfa3ff4d8ff40.jpg"
+            alt=""
+          />
+          <div class="artis-name">
+            <p>Pretty Girl</p>
+            <span>Ya Thoybah</span>
+          </div>
+          <div class="icons-wrap">
+            <small>02:35</small>
+            <i class="bx bx-star"></i>
+            <i class="bx bx-play-circle"></i>
+            <i class="bx bx-dots-vertical-rounded"></i>
+          </div>
+        </div>
+        <div class="suggestion-image">
+          <img
+            src="https://i.pinimg.com/236x/bc/ac/39/bcac399c750062899608b98739a126d3.jpg"
+            alt=""
+          />
+          <div class="artis-name">
+            <p>Lucy Black</p>
+            <span>Race</span>
+          </div>
+          <div class="icons-wrap">
+            <small>03:49</small>
+            <i class="bx bx-star"></i>
+            <i class="bx bx-play-circle"></i>
+            <i class="bx bx-dots-vertical-rounded"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommended">
+      <p class="suggestion-title">Genre's</p>
+      <div class="genre-container">
+        <div class="genre-image-container">
+          <img src="/static/images/svg/001-hip hop.svg" alt="" />
+          <p>Hip-Hop</p>
+        </div>
+        <div class="genre-image-container">
+          <img src="/static/images/svg/002-turntable.svg" alt="" />
+          <p>EDM</p>
+        </div>
+        <div class="genre-image-container">
+          <img src="/static/images/svg/008-boombox.svg" alt="" />
+          <p>Jazz</p>
+        </div>
+        <div class="genre-image-container">
+          <img src="/static/images/svg/016-speaker.svg" alt="" />
+          <p>Dangdut</p>
+        </div>
+      </div>
+      <div class="genre-container">
+        <div class="genre-image-container">
+          <img src="/static/images/svg/018-cassette.svg" alt="" />
+          <p>Blues</p>
+        </div>
+        <div class="genre-image-container">
+          <img src="/static/images/svg/017-Lp.svg" alt="" />
+          <p>Pop</p>
+        </div>
+        <div class="genre-image-container">
+          <img src="/static/images/svg/015-boombox.svg" alt="" />
+          <p>Rock</p>
+        </div>
+        <div class="genre-image-container">
+          <img src="/static/images/svg/013-boombox.svg" alt="" />
+          <p>Heavy Metal</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer.ejs')%>

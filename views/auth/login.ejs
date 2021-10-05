@@ -1,0 +1,16 @@
+<%- include('../partials/head.ejs')%>
+
+<div class="login-container">
+  <div class="login-content">
+    <p>Login</p>
+    <form id="form" action="" method="POST">
+      <label for="email">Email Adress</label>
+      <input type="email" name="email" />
+      <label for="email">Password</label>
+      <input placeholder="<%= message %>" type="password" name="password" />
+      <input class="input-btn" type="submit" value="Sign In" />
+    </form>
+    <span>Don't have account? <a href="/register">Register.</a></span>
+  </div>
+</div>
+<%- include('../partials/footer.ejs')%>

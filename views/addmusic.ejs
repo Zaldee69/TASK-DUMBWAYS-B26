@@ -1,0 +1,15 @@
+<%- include('./partials/head.ejs')%>
+
+<div class="login-container">
+  <div class="login-content">
+    <p>Upload Your Music</p>
+    <form action="" method="POST" enctype="multipart/form-data">
+      <label for="title">Title</label>
+      <input type="text" name="title" />
+      <label for="image">Music Cover</label>
+      <input type="file" name="image" />
+      <input class="input-btn" type="submit" value="Upload" />
+    </form>
+  </div>
+</div>
+<%- include('./partials/footer.ejs')%>
