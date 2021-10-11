@@ -1,0 +1,23 @@
+<%- include('partials/head.ejs')%> <%- include('partials/sidebar.ejs')%>
+<div class="artis-container">
+  <div class="home-content">
+    <div class="artis-profile">
+      <div class="artis-content">
+        <div class="artis-image">
+          <img src="<%= photo %>" alt="" />
+        </div>
+
+        <div class="artis-title">
+          <small>Name:</small>
+          <h3><%= name %></h3>
+          <small>Start Career:</small>
+          <p><%= startCareer %></p>
+          <small>About:</small>
+          <p><%= about %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer.ejs')%>

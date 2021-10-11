@@ -34,7 +34,6 @@ router.post("/login", (req, res) => {
   if (email == "" && password == "") {
     req.session.message = "Please fulfill input";
 
-    console.log(req.session.message[0]);
     res.redirect("/login");
     return;
   }
@@ -43,6 +42,7 @@ router.post("/login", (req, res) => {
     req.session.isLogin = false;
     if (err) throw err;
 
+    //execution querry
     conn.query(query, [email], (err, results) => {
       if (err) throw err;
 
@@ -51,7 +51,6 @@ router.post("/login", (req, res) => {
       if (!isMatch) {
         req.session.message = "email or password is incorrect";
 
-        console.log(req.session.message);
         return res.redirect("/login");
       } else {
         req.session.isLogin = true;

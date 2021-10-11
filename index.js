@@ -3,10 +3,12 @@ const http = require("http");
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
-const app = express();
 const dbConnection = require("./connection/db");
-//routes
 
+//Calling express
+const app = express();
+
+//routes
 const profileRoute = require("./routes/profile");
 const artisRoute = require("./routes/artis");
 const albumRoute = require("./routes/album");
@@ -38,8 +40,17 @@ app.use(
   })
 );
 
+let genreValue = [];
 // render home page
 app.get("/", function (req, res) {
+  dbConnection.getConnection((err, conn) => {
+    const query = "SELECT * FROM tb_genres;";
+    conn.query(query, (err, results) => {
+      if (err) throw err;
+      genreValue = [...results];
+    });
+    conn.release();
+  });
   dbConnection.getConnection((err, conn) => {
     const query = "SELECT * FROM tb_music;";
     conn.query(query, (err, results) => {
@@ -48,6 +59,7 @@ app.get("/", function (req, res) {
         isLogin: req.session.isLogin,
         userName: req.session.user,
         totalMusic: results.length,
+        genre: genreValue,
       });
     });
     conn.release();
@@ -56,6 +68,7 @@ app.get("/", function (req, res) {
 
 app.use("/", authRoute);
 // get routes
+app.get("/artis/profile/:id", artisRoute);
 app.get("/delete/:id", musicRoute);
 app.get("/songs", songRoute);
 app.get("/artis", artisRoute);

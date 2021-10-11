@@ -1,49 +1,85 @@
 const router = require("express").Router();
-// const uploadFile = require("../middlewares/uploadFile");
 const dbConnection = require("../connection/db");
 const multer = require("multer");
-let imageName;
 
+//set storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
+    //set destionation
     cb(null, "./public/uploads/");
   },
   filename: (req, file, cb) => {
-    imageName = file.originalname;
     cb(null, file.originalname);
   },
 });
 
-const upload = multer({ storage: storage });
+// file filter so only image are allowed
+const fileFilter = function (req, file, cb) {
+  if (!file.originalname.match(/\.(jpg|JPG|png|PNG|svg|SVG|mp3|MP3)$/)) {
+    req.fileValidationError = {
+      message: "Only image files are allowed",
+    };
+
+    return cb(new Error("Only image files are allowed", false));
+  }
+
+  cb(null, true);
+};
+
+// max file size in MB
+const sizeMB = 20;
+const maxSize = sizeMB * 1024 * 1024;
+
+//upload function
+const upload = multer({
+  storage: storage,
+  fileFilter,
+  limits: {
+    fileSize: maxSize,
+  },
+});
 
 // render add music
 router.get("/addmusic", (req, res) => {
   res.render("addmusic", { title: "Add Music" });
 });
-router.post("/addmusic", upload.single("image"), (req, res) => {
-  const { title, image } = req.body;
+router.post(
+  "/addmusic",
+  upload.fields([
+    {
+      name: "image",
+    },
+    {
+      name: "music",
+    },
+  ]),
+  (req, res) => {
+    const { title } = req.body;
+    const music = req.files.music[0].filename;
+    const image = req.files.image[0].filename;
 
-  const query = `INSERT INTO tb_music (title, cover_music) VALUES (?,?)`;
+    const query = `INSERT INTO tb_music (title,music, cover_music) VALUES (?,?,?)`;
 
-  if (title === "" && image === "") {
-    res.redirect("/addmusic");
-  } else {
-    dbConnection.getConnection((err, conn) => {
-      if (err) throw err;
-
-      conn.query(query, [title, imageName], (err, results) => {
+    if (title === "") {
+      res.redirect("/addmusic");
+    } else {
+      dbConnection.getConnection((err, conn) => {
         if (err) throw err;
-        req.session.music = {
-          title: req.body.title,
-          music: req.body.music,
-        };
-        res.redirect("/profile");
-      });
 
-      conn.release();
-    });
+        conn.query(query, [title, music, image], (err, results) => {
+          if (err) throw err;
+          req.session.music = {
+            title: req.body.title,
+            music: req.body.music,
+          };
+          res.redirect("/profile");
+        });
+
+        conn.release();
+      });
+    }
   }
-});
+);
 
 //delete music
 router.get("/delete/:id", function (req, res) {
@@ -76,7 +112,7 @@ router.get("/editmusic/:id", (req, res) => {
       res.render("../views/editmusic", {
         title: "Edit",
         titleMusic: results[0].title,
-        // music: results[0].music,
+        music: results[0].music,
         cover: results[0].cover_music,
         id: results[0].id,
       });
@@ -85,22 +121,34 @@ router.get("/editmusic/:id", (req, res) => {
   });
 });
 
-router.post("/editmusic/:id", upload.single("image"), (req, res) => {
-  const { id, title } = req.body;
+router.post(
+  "/editmusic/:id",
+  upload.fields([
+    {
+      name: "image",
+    },
+    {
+      name: "music",
+    },
+  ]),
+  (req, res) => {
+    const { id, title } = req.body;
+    const music = req.files.music[0].filename;
+    const image = req.files.image[0].filename;
+    const query =
+      "UPDATE tb_music SET title = ?, music = ?, cover_music= ? WHERE id = ?";
 
-  const image = req.file.filename;
-
-  const query = "UPDATE tb_music SET title = ?, cover_music= ? WHERE id = ?";
-
-  dbConnection.getConnection((err, conn) => {
-    if (err) throw err;
-
-    conn.query(query, [title, image, id], (err, results) => {
+    dbConnection.getConnection((err, conn) => {
       if (err) throw err;
-      res.redirect("/profile");
+
+      conn.query(query, [title, music, image, id], (err, results) => {
+        console.log(results);
+        if (err) throw err;
+        res.redirect("/profile");
+      });
+      conn.release();
     });
-    conn.release();
-  });
-});
+  }
+);
 
 module.exports = router;

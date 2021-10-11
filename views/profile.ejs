@@ -32,6 +32,14 @@
         <a href="/delete/<%= user.id%>" class="delete-btn">Delete</a>
         <a href="/editmusic/<%= user.id%>" class="edit-btn">Edit</a>
         <span><%= user.title%></span>
+        <audio controls>
+          <source
+            class="source"
+            src="static/uploads/<%= user.music%>"
+            type="audio/mpeg"
+          />
+          Your browser does not support the audio element.
+        </audio>
       </div>
 
       <% }); %>

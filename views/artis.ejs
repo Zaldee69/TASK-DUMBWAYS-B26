@@ -5,111 +5,72 @@
       <h1>Top Solo Artists 2021</h1>
     </div>
     <div class="song-images-container">
+      <% data.forEach(function(el){ %>
       <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/f9/fa/67/f9fa673c52a95c64c836d46847b0cdf3.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Billie Eilish</span>
-        <small class="hidden">Bush</small>
+        <a href="/artis/profile/<%= el.id%>"
+          ><img src="<%= el.photo%>" alt=""
+        /></a>
+        <span style="text-align: center"><%= el.name%></span>
       </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/13/0d/f6/130df6d11ab2a8e8a87b72d1e79f255f.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Camila Cabello</span>
-        <small class="hidden">Live</small>
-      </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/45/10/7a/45107ad1cdf97d97d1e506c81a68e56b.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Ed Sheeran</span>
-        <small class="hidden">Wellcome To Gulag</small>
-      </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/93/c4/4c/93c44c750585044360d176ff0f5a2643.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Shawn Mendes</span>
-        <small class="hidden">Sleeping With Sirens Madness</small>
-      </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/2d/36/58/2d3658fb2103b5c9f4888ffc3e1258ec.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Dua Lipa</span>
-        <small class="hidden">Beat It</small>
-      </div>
-      <div class="song-image">
-        <img
-          src="https://ladygaganow.net/albums/Studio%20Photoshoots/2020/Manson%20Pole%20%5BStupid%20Love%20Music%20Video%5D/large.1-24-20_Mason_Poole_002.jpg.a1ec0ebfdee31810b0775445bc70ad4e.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Lady Gaga</span>
-        <small class="hidden">ggg</small>
-      </div>
+      <% }); %>
     </div>
-  </div>
-  <div class="songs-container">
-    <div class="songs-title">
-      <h1>Top Band 2021</h1>
-    </div>
-    <div class="song-images-container">
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/9d/d0/75/9dd075494eeeb286f8183af09124b8c8.jpg"
-          alt=""
-        />
-        <span style="text-align: center">The Glorious Son</span>
-        <small class="hidden">Bush</small>
+    <div class="songs-container">
+      <div class="songs-title">
+        <h1>Top Band 2021</h1>
       </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/55/52/3b/55523bb6dc62ff4b219903b7c94c3d5a.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Larkin Poe</span>
-        <small class="hidden">Live</small>
-      </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/f2/af/0b/f2af0b89f1209cda4c035e439bfd6843.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Joyous Wolf</span>
-        <small class="hidden">Wellcome To Gulag</small>
-      </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/cb/f2/c7/cbf2c7fc0a38656468c971879616bca3.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Quaker City Night Hawks</span>
-        <small class="hidden">Sleeping With Sirens Madness</small>
-      </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/c8/b2/fb/c8b2fbb0d577258173f0207f4be15b2e.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Briston Maroney</span>
-        <small class="hidden">Beat It</small>
-      </div>
-      <div class="song-image">
-        <img
-          src="https://i.pinimg.com/236x/72/fd/d1/72fdd1fb5cef7610c3ba20d56f0f5004.jpg"
-          alt=""
-        />
-        <span style="text-align: center">Maroon 5</span>
-        <small class="hidden">ggg</small>
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="song-images-container">
+        <div class="song-image">
+          <img
+            src="https://i.pinimg.com/236x/9d/d0/75/9dd075494eeeb286f8183af09124b8c8.jpg"
+            alt=""
+          />
+          <span style="text-align: center">The Glorious Son</span>
 
-<%- include('partials/footer.ejs')%>
+          <button id="myModal">yayaya</button>
+        </div>
+        <div class="song-image">
+          <img
+            src="https://i.pinimg.com/236x/55/52/3b/55523bb6dc62ff4b219903b7c94c3d5a.jpg"
+            alt=""
+          />
+          <span style="text-align: center">Larkin Poe</span>
+          <small class="hidden">Live</small>
+        </div>
+        <div class="song-image">
+          <img
+            src="https://i.pinimg.com/236x/f2/af/0b/f2af0b89f1209cda4c035e439bfd6843.jpg"
+            alt=""
+          />
+          <span style="text-align: center">Joyous Wolf</span>
+          <small class="hidden">Wellcome To Gulag</small>
+        </div>
+        <div class="song-image">
+          <img
+            src="https://i.pinimg.com/236x/cb/f2/c7/cbf2c7fc0a38656468c971879616bca3.jpg"
+            alt=""
+          />
+          <span style="text-align: center">Quaker City Night Hawks</span>
+          <small class="hidden">Sleeping With Sirens Madness</small>
+        </div>
+        <div class="song-image">
+          <img
+            src="https://i.pinimg.com/236x/c8/b2/fb/c8b2fbb0d577258173f0207f4be15b2e.jpg"
+            alt=""
+          />
+          <span style="text-align: center">Briston Maroney</span>
+          <small class="hidden">Beat It</small>
+        </div>
+        <div class="song-image">
+          <img
+            src="https://i.pinimg.com/236x/72/fd/d1/72fdd1fb5cef7610c3ba20d56f0f5004.jpg"
+            alt=""
+          />
+          <span style="text-align: center">Maroon 5</span>
+          <small class="hidden">ggg</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer.ejs')%>
+</div>
